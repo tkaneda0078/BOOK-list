@@ -15,6 +15,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <?php echo Asset::css('style.css'); ?>
+    <?php echo Asset::css('custom.css'); ?>
 
 </head>
 <body class="home">
@@ -46,6 +47,20 @@
             </ul>
         </div>
     </div>
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="span12">-->
+<!--                <form action="" id="custom-search-form" class="form-search form-horizontal pull-right">-->
+                <?php echo Form::open('api/search', array('id' => 'custom-search-form', 'class' => 'form-search form-horizontal pull-right')); ?>
+                    <div class="input-append span12">
+                        <input type="text" class="search-query" placeholder="Search" name="word">
+                        <button type="submit" id="serch" class="btn"><i class="icon-search"></i></button>
+                    </div>
+                <?php echo Form::close(); ?>
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <!-- \ Site Menu -->
 
 
@@ -174,6 +189,8 @@
 <!-- Caption Effects Plugin -->
 <?php echo Asset::js('CaptionHoverEffects/js/modernizr.custom.js'); ?>
 <?php echo Asset::js('CaptionHoverEffects/js/toucheffects.js'); ?>
+
+<?php echo Asset::js('ajax.js'); ?>
 
 <!-- \ JS Files  -->
 
