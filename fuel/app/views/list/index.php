@@ -190,8 +190,6 @@
 <?php echo Asset::js('CaptionHoverEffects/js/modernizr.custom.js'); ?>
 <?php echo Asset::js('CaptionHoverEffects/js/toucheffects.js'); ?>
 
-<?php echo Asset::js('ajax.js'); ?>
-
 <!-- \ JS Files  -->
 
 

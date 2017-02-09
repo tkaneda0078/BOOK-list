@@ -15,8 +15,21 @@ Class Controller_Api extends Controller
      */
     public function post_search()
     {
-        $book_data = Model_Api::fetchBookData(Input::post('word'));
+        $val = Model_Api::validate();
 
-        return Response::forge(View::forge('list/index'));
+        $data = array();
+        if ( ! $val->run())
+        {
+            foreach ($val->error() as $key => $value)
+            {
+                $data['error_msg'][$key] = $value->get_message();
+            }
+        }
+        else
+        {
+            $data['book_data'] = Model_Api::fetchBookData(Input::post('word'));
+        }
+
+        return Response::forge(View::forge('list/index',$data));
     }
 }
