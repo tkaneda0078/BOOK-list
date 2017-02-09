@@ -1,4 +1,5 @@
 <?php
+
 /**
  * APIモデルクラス
  *
@@ -20,6 +21,9 @@ class Model_Api extends \Orm\Model
     {
         $val = Validation::forge();
 
+        $val->add('word', '検索キーワード')
+            ->add_rule('max_length', 20);
+
         return $val;
     }
 
@@ -35,7 +39,7 @@ class Model_Api extends \Orm\Model
     public static function fetchBookData($search_word)
     {
         // Google Books API
-        $url = 'https://www.googleapis.com/books/v1/volumes?q='.$search_word;
+        $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $search_word;
 
         $ch = curl_init(); //開始
 
@@ -44,7 +48,7 @@ class Model_Api extends \Orm\Model
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 証明書の検証を行わない
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // curl_execの結果を文字列で返す
 
-        $response =  curl_exec($ch);
+        $response = curl_exec($ch);
         $result = json_decode($response, true);
 
         curl_close($ch); //終了
