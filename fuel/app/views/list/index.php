@@ -192,6 +192,11 @@
 
 <!-- \ JS Files  -->
 
+<script>
+    <?php if (isset($books)) : ?>
+    var books = <?php echo json_encode($books, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+    <?php endif; ?>
+</script>
 
 </body>
 </html>
