@@ -18,7 +18,7 @@ Class Controller_Api extends Controller
         $val = Model_Api::validate();
 
         $data = array();
-        if ( ! $val->run())
+        if (!$val->run())
         {
             foreach ($val->error() as $key => $value)
             {
@@ -27,9 +27,32 @@ Class Controller_Api extends Controller
         }
         else
         {
-            $data['book_data'] = Model_Api::fetchBookData(Input::post('word'));
+            $api_data[] = Model_Api::fetchBookData(Input::post('word'));
+            $data['books'] = $this::formatBookData($api_data);
         }
 
-        return Response::forge(View::forge('list/index',$data));
+        return Response::forge(View::forge('list/index', $data));
     }
+
+    /**
+     * 書籍情報を整形
+     *
+     * @access private
+     * @return $after_book_data
+     */
+    private static function formatBookData($book_data)
+    {
+        $after_book_data = array();
+
+        foreach ($book_data[0]['items'] as $key_num => $data)
+        {
+            foreach ($data['volumeInfo'] as $key => $value)
+            {
+                $after_book_data[$key_num][$key] = $value;
+            }
+        }
+
+        return $after_book_data;
+    }
+    
 }
