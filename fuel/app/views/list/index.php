@@ -47,20 +47,12 @@
             </ul>
         </div>
     </div>
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="span12">-->
-<!--                <form action="" id="custom-search-form" class="form-search form-horizontal pull-right">-->
-                <?php echo Form::open('api/search', array('id' => 'custom-search-form', 'class' => 'form-search form-horizontal pull-right')); ?>
-                    <div class="input-append span12">
-                        <input type="text" class="search-query" placeholder="Search" name="word">
-                        <button type="submit" id="serch" class="btn"><i class="icon-search"></i></button>
-                    </div>
-                <?php echo Form::close(); ?>
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <?php echo Form::open(array('action' => 'api/search', 'method' => 'get')); ?>
+	<div class="input-append span12">
+	    <input type="text" class="search-query" placeholder="Search" name="word">
+	    <button type="submit" id="serch" class="btn"><i class="icon-search"></i></button>
+	</div>
+    <?php echo Form::close(); ?>
     <!-- \ Site Menu -->
 
 
@@ -90,90 +82,28 @@
 
 
 <!-- \ Site Main -->
-<div class="site-main">
-
+<div class="site-main">    
     <ul class="row grid cs-style-2">
+	<?php if (isset($books)): ?>
+	<?php //debug::dump($books); ?>
+	<?php foreach ($books as $data): ?>
         <li class="col-md-2 post">
             <figure>
-                <?php echo Asset::img('uploads/01.jpg'); ?>
+		<?php 
+		    if (isset($data['imageLinks']['thumbnail'])) {
+			echo Html::img($data['imageLinks']['thumbnail']);
+		    } else {
+			echo Asset::img('uploads/01.jpg');
+		    }
+		?>
                 <figcaption>
-                    <h3>Music</h3>
+                    <h3><?php echo $data['title']; ?></h3>
                     <span>Jacob Cummings</span>
                 </figcaption>
             </figure>
         </li>
-        <li class="col-md-2 post">
-            <figure>
-                <?php echo Asset::img('uploads/02.jpg'); ?>
-                <figcaption>
-                    <h3>Music</h3>
-                    <span>Jacob Cummings</span>
-                </figcaption>
-            </figure>
-        </li>
-        <li class="col-md-2 post">
-            <figure>
-                <?php echo Asset::img('uploads/01.jpg'); ?>
-                <figcaption>
-                    <h3>Music</h3>
-                    <span>Jacob Cummings</span>
-                </figcaption>
-            </figure>
-        </li>
-        <li class="col-md-2 post">
-            <figure>
-                <?php echo Asset::img('uploads/02.jpg'); ?>
-                <figcaption>
-                    <h3>Music</h3>
-                    <span>Jacob Cummings</span>
-                </figcaption>
-            </figure>
-        </li>
-        <li class="col-md-2 post">
-            <figure>
-                <?php echo Asset::img('uploads/01.jpg'); ?>
-                <figcaption>
-                    <h3>Music</h3>
-                    <span>Jacob Cummings</span>
-                </figcaption>
-            </figure>
-        </li>
-        <li class="col-md-2 post">
-            <figure>
-                <?php echo Asset::img('uploads/02.jpg'); ?>
-                <figcaption>
-                    <h3>Music</h3>
-                    <span>Jacob Cummings</span>
-                </figcaption>
-            </figure>
-        </li>
-        <li class="col-md-2 post">
-            <figure>
-                <?php echo Asset::img('uploads/01.jpg'); ?>
-                <figcaption>
-                    <h3>Music</h3>
-                    <span>Jacob Cummings</span>
-                </figcaption>
-            </figure>
-        </li>
-        <li class="col-md-2 post">
-            <figure>
-                <?php echo Asset::img('uploads/02.jpg'); ?>
-                <figcaption>
-                    <h3>Music</h3>
-                    <span>Jacob Cummings</span>
-                </figcaption>
-            </figure>
-        </li>
-        <li class="col-md-2 post">
-            <figure>
-                <?php echo Asset::img('uploads/01.jpg'); ?>
-                <figcaption>
-                    <h3>Music</h3>
-                    <span>Jacob Cummings</span>
-                </figcaption>
-            </figure>
-        </li>
+	<?php endforeach; ?>
+	<?php endif; ?>
     </ul>
 </div>
 
@@ -191,12 +121,6 @@
 <?php echo Asset::js('CaptionHoverEffects/js/toucheffects.js'); ?>
 
 <!-- \ JS Files  -->
-
-<script>
-    <?php if (isset($books)) : ?>
-    var books = <?php echo json_encode($books, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-    <?php endif; ?>
-</script>
 
 </body>
 </html>

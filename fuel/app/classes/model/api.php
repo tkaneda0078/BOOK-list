@@ -22,6 +22,7 @@ class Model_Api extends \Orm\Model
         $val = Validation::forge();
 
         $val->add('word', '検索キーワード')
+            ->add_rule('required')
             ->add_rule('max_length', 20);
 
         return $val;

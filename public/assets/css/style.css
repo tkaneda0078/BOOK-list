@@ -171,7 +171,8 @@ svg {
 .home .site-main {
 }
 .home .site-main img {
-	width:100%
+	width:100%;
+	height: 195.328px;
 }
 .home .site-main .post {
 	padding:0px
