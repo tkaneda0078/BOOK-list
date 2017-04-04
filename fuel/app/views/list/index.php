@@ -25,43 +25,11 @@
 <div class="site-header">
     <!-- / Site Logo -->
     <div class="site-logo">
-        <a href="">
+        <a href="<?php echo Uri::create('top'); ?>">
             <?php echo Asset::img('site-logo.png'); ?>
         </a>
     </div>
     <!-- \ Site Logo -->
-
-
-    <!-- / Site Menu -->
-    <div class="site-menu">
-        <div class="icon"></div>
-        <div class="menu">
-            <ul>
-                <li><a href="index.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="portfolio-single.html">Portfolio Single</a></li>
-                <li><a href="blog.html">Blog / News</a></li>
-                <li><a href="blog-single.html">Blog Single</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="shortcodes.html">Shortcodes</a></li>
-            </ul>
-        </div>
-    </div>
-    <?php echo Form::open(array('action' => 'api/search', 'method' => 'get')); ?>
-	<div class="input-append span12">
-	    <input type="text" class="search-query" placeholder="Search" name="word">
-	    <button type="submit" id="serch" class="btn"><i class="icon-search"></i></button>
-	</div>
-    <?php echo Form::close(); ?>
-    <!-- \ Site Menu -->
-
-
-    <!-- / Site Description -->
-    <h1>
-        website.
-    </h1>
-    <!-- \ Site Description -->
-
 
     <!-- / Site Footer -->
     <div class="site-footer">
