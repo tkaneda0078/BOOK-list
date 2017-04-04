@@ -52,7 +52,7 @@ input, textarea {
 	float:left;
 	padding-top:20px;
 	text-align:center;
-	background-color:#eaeaea;
+	background-color:#00BCD4;
 	box-size:border-box;
 }
 .site-footer {
@@ -93,7 +93,7 @@ input, textarea {
 }
 .site-social i {
 	font-size:20px;
-	color:#999;
+	color:#E91E63;
 	cursor:pointer;
 	-o-transition:.5s;
 	-ms-transition:.5s;
@@ -464,7 +464,7 @@ svg {
  width:100%;
  display:block;
  float:left;
- background-color:#eaeaea;
+ background-color:#00BCD4;
  box-size:border-box;
  padding-top:0px;
  min-height:65px;
@@ -499,5 +499,6 @@ float:left
  .inner {
  padding:40px 20px;
 }
+background-image:url(../img/bookstore.jpg);
 }
 
