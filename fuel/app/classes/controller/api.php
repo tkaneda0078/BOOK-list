@@ -20,11 +20,11 @@ Class Controller_Api extends Controller
         $data = array();
         if ( ! $val->run(array('word' => Input::get('word'))))
         {
-            foreach ($val->error() as $key => $value)
+            foreach ($val->error() as $value)
             {
-                $data['error_msg'][$key] = $value->get_message();
+                $data['error_msg'] = $value->get_message();
             }
-	    return Response::forge(View::forge('list/index', $data));
+	    return Response::forge(View::forge('top/index', $data));
         }
 
         $api_data[] = Model_Api::fetchBookData(Input::get('word'));
