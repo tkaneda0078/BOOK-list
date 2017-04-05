@@ -22,10 +22,13 @@
         <div class="header-content">
             <div class="header-content-inner">
                 <h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1>
+		<?php if (isset($error_msg)): ?>
+		    <h2><?php echo $error_msg; ?></h2>
+		<?php endif; ?>
 		<hr>
 		<?php echo Form::open(array('action' => 'api/search', 'method' => 'get')); ?>
 		    <div class="input-append span12">
-			<input type="text" class="search-query" placeholder="Search" name="word">
+			<input type="text" class="search-query" placeholder="Search" name="word" required>
 		    </div>
 		    <div>
 			<button type="submit" id="serch" class="btn btn-primary btn-xl page-scroll">Find Out More</button>
